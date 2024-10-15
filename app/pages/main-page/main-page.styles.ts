@@ -36,6 +36,7 @@ export const mainPageStyles = StyleSheet.create({
     height: 50
   },
   text: {
-    color: '#ffffff'
+    color: '#ffffff',
+    fontFamily: 'Roboto-Medium'
   }
 })

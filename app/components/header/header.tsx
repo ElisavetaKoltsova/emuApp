@@ -1,8 +1,12 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableHighlight } from "react-native";
 import { headerStyles } from "./header.styles";
 
-export default function Header(): JSX.Element {
+type HeaderProps = {
+  onSettingsPress: () => void;
+}
+
+export default function Header({onSettingsPress}: HeaderProps): JSX.Element {
   return (
     <View style={headerStyles.container}>
       <View style={headerStyles.iconContainer}>
@@ -19,6 +23,16 @@ export default function Header(): JSX.Element {
           EMU
         </Text>
       </View>
+
+      <TouchableHighlight
+        style={headerStyles.settingsIcoContainer}
+        onPress={onSettingsPress}
+      >
+        <Image
+        style={headerStyles.settingsIco}
+          source={require('../../../source/ico-settings.png')}
+        />
+      </TouchableHighlight>
     </View>
   );
 }

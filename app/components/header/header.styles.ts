@@ -4,15 +4,14 @@ export const headerStyles = StyleSheet.create({
   container: {
     textAlign: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: '#1F2022',
     flexDirection: 'row',
   },
   textContainer: {
     flex: 1,
-    backgroundColor: '#1F2022',
     textAlign: 'center',
     alignItems: 'center',
-    paddingRight: '10%',
     paddingTop: '3%'
   },
   text: {
@@ -31,5 +30,15 @@ export const headerStyles = StyleSheet.create({
     flex: 1,
     width: '100%',
     resizeMode: 'contain'
+  },
+  settingsIcoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15
+  },
+  settingsIco: {
+    width: 30,
+    height: 30,
+    tintColor: '#fff',
   }
 });

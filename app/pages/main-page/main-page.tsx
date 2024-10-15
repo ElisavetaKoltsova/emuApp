@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, TouchableHighlight, Image } from "react-native";
 import { mainPageStyles } from "./main-page.styles";
 import Svg, { Circle } from "react-native-svg";
-import BleManager from 'react-native-ble-manager';
 
 export default function MainPage(): JSX.Element {
   return (
