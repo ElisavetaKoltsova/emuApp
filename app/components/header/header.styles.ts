@@ -7,6 +7,7 @@ export const headerStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1F2022',
     flexDirection: 'row',
+    paddingHorizontal: 10
   },
   textContainer: {
     flex: 1,
@@ -23,8 +24,7 @@ export const headerStyles = StyleSheet.create({
     height: 65,
     width: 65,
     backgroundColor: '#1F2022',
-    padding: 10,
-    marginLeft: 5
+    padding: 10
   },
   iconImage: {
     flex: 1,
@@ -34,7 +34,7 @@ export const headerStyles = StyleSheet.create({
   settingsIcoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 15
+    padding: 10
   },
   settingsIco: {
     width: 30,

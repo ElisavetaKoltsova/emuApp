@@ -6,6 +6,9 @@ export const mainPageStyles = StyleSheet.create({
     height: Dimensions.get('window').height,
     alignItems: 'center',
   },
+  cardListContainer: {
+    width: '85%'
+  },
   addCardButton: {
     borderRadius: 50,
     position: 'absolute',

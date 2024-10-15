@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import Header from "./components/header/header";
 import { indexStyles } from "./index.styles";
 import Footer from "./components/footer/footer";
@@ -46,7 +46,7 @@ export default function Index() {
   }
 
   return (
-    <View style={indexStyles.container}>
+    <SafeAreaView style={indexStyles.container}>
       <Header onSettingsPress={handleSettingsButtonClick} />
       {
         mainPageStatus
@@ -63,6 +63,6 @@ export default function Index() {
         ? <SettingsPopup onToggleModal={handleSettingsButtonClick}/>
         : ''
       }
-    </View>
+    </SafeAreaView>
   );
 }
