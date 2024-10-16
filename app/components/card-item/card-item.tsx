@@ -28,9 +28,9 @@ export default function CardItem({card}: CardItemProps): JSX.Element {
         </View>
         :
         <LinearGradient
-          colors={['transparent', '#ffffff', '#14FF00', 'transparent']}
+          colors={['transparent', '#14FF00', '#14FF00', 'transparent']}
           style={{
-            padding: 5,
+            padding: 1,
             borderRadius: 20,
             justifyContent: 'center',
             alignItems: 'center',
