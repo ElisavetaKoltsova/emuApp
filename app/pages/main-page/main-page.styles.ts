@@ -7,7 +7,7 @@ export const mainPageStyles = StyleSheet.create({
     alignItems: 'center',
   },
   cardListContainer: {
-    width: '85%'
+    width: '90%'
   },
   addCardButton: {
     borderRadius: 50,
@@ -26,7 +26,7 @@ export const mainPageStyles = StyleSheet.create({
     tintColor: '#fff',
   },
   onlineIndicatorContainer: {
-    marginTop: '5%',
+    marginTop: '7%',
     backgroundColor: '#1F2022',
     borderRadius: 25,
     flexDirection: 'row',

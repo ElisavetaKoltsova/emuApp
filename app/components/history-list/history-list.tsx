@@ -11,7 +11,7 @@ export default function HistoryList({cards}: HistoryListProps): JSX.Element {
   return (
     <View>
       {
-        cards.map((card) => <HistoryItem card={card} key={card.RFIDTag} />)
+        cards.map((card) => <HistoryItem card={card} key={card.uid} />)
       }
     </View>
   );

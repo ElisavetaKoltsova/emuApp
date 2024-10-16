@@ -6,7 +6,7 @@ type HistoryItemProps = {
   card: Card
 };
 
-export default function HistoryItem({card}: HistoryItemProps): JSX.Element {
+export default function HistoryItem({ card }: HistoryItemProps): JSX.Element {
   return (
     <View>
       <Text>{card.lastReadTime}</Text>
