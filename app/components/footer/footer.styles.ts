@@ -5,7 +5,7 @@ export const footerStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    height: 60,
+    height: 80,
     backgroundColor: '#1F2022',
     flexDirection: 'row',
     justifyContent: 'space-between',

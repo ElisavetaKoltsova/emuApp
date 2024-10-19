@@ -1,5 +1,4 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
 import Header from "./components/header/header";
 import { indexStyles } from "./index.styles";
 import Footer from "./components/footer/footer";
@@ -9,6 +8,7 @@ import MainPage from "./pages/main-page/main-page";
 import HistoryPage from "./pages/history-page/history-page";
 import Loader from "./components/loader/loader";
 import SettingsPopup from "./components/settings-popup/settings-popup";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const [fontLoaded, setFontLoaded] = useState(false);

@@ -23,7 +23,7 @@ export default function SettingsPopup({onToggleModal}: SettingsPopupProps): JSX.
 
             <Switch
               trackColor={{false: '#ffffff', true: '#5c5f65'}}
-              thumbColor={isEnabled ? '#ffffff' : '#5c5f65'}
+              thumbColor={isEnabled ? '#14FF00' : '#5c5f65'}
               onValueChange={toggleSwitch}
               value={isEnabled}
             />
