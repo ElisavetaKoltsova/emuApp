@@ -17,7 +17,7 @@ export const mainPageStyles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: 140,
+    bottom: 125,
     right: 10
   },
   addCardIco: {

@@ -6,8 +6,8 @@ export const historyPageStyles = StyleSheet.create({
     margin: '5%'
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Roboto-Black',
-    color: '#1F2022'
+    color: '#ffffff'
   }
 });

@@ -13,7 +13,8 @@ export const headerStyles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     alignItems: 'center',
-    paddingTop: '3%'
+    justifyContent: 'center',
+    paddingBottom: '3%'
   },
   text: {
     color: '#ffffff',
@@ -21,8 +22,8 @@ export const headerStyles = StyleSheet.create({
     fontFamily: 'Concrete-Regular'
   },
   iconContainer: {
-    height: 65,
-    width: 65,
+    height: 50,
+    width: 50,
     backgroundColor: '#1F2022',
     padding: 10
   },

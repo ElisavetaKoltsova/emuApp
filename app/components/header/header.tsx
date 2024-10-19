@@ -12,7 +12,7 @@ export default function Header({onSettingsPress}: HeaderProps): JSX.Element {
       <View style={headerStyles.iconContainer}>
         <Image
           style={headerStyles.iconImage}
-          source={require('../../../source/ico-white.png')}
+          source={require('../../../source/ico-cropped.png')}
         />
       </View>
       
