@@ -10,6 +10,11 @@ import Loader from "./components/loader/loader";
 import SettingsPopup from "./components/settings-popup/settings-popup";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ConnectCardPopup from "./connect-card-popup/connect-card-popup";
+import BleManager from 'react-native-ble-manager';
+import { NativeModules, NativeEventEmitter } from 'react-native';
+
+const BleManagerModule = NativeModules.BleManager;
+const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
 export default function Index() {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -29,6 +34,29 @@ export default function Index() {
     }
 
     loadFonts();
+  }, []);
+
+  // Обработчик обнаруженных устройств
+  const handleDiscoverPeripheral = (peripheral) => {
+    console.log('Discovered peripheral:', peripheral);
+  };
+
+  useEffect(() => {
+    // Инициализация менеджера
+    BleManager.start({ showAlert: false })
+      .then(() => console.log('Bluetooth Manager initialized'))
+      .catch((error) => console.log('Bluetooth init error:', error));
+
+    // Подписка на события
+    const handlerDiscover = bleManagerEmitter.addListener(
+      'BleManagerDiscoverPeripheral',
+      handleDiscoverPeripheral,
+    );
+
+    return () => {
+      // Отписка от событий при размонтировании компонента
+      handlerDiscover.remove();
+    };
   }, []);
 
   if (!fontLoaded) {
@@ -51,6 +79,18 @@ export default function Index() {
     setAddCardPopupStatus(!addCardPopupStatus);
   };
 
+   // Функция для проверки состояния Bluetooth
+  const checkBluetoothState = () => {
+    BleManager.checkState();
+  };
+
+  // Функция для поиска устройств
+  const scanDevices = () => {
+    BleManager.scan([], 5, true)
+      .then(() => console.log('Scanning started'))
+      .catch((error) => console.log('Scan error:', error));
+  };
+
   return (
     <SafeAreaView style={indexStyles.container}>
       <Header onSettingsPress={handleSettingsButtonClick} />
@@ -59,6 +99,8 @@ export default function Index() {
         ? <MainPage onToggleModal={handleAddCardButtonClick} />
         : <HistoryPage />
       }
+    
+      {/* <Button title="Сканировать устройства" onPress={scanDevices} /> */}
       <Footer
         onHomePress={handleHomeButtonClick}
         onHistoryPress={handleHistoryButtonClick}
@@ -72,7 +114,10 @@ export default function Index() {
 
       {
         addCardPopupStatus
-        ? <ConnectCardPopup onToggleModal={handleAddCardButtonClick} />
+        ? <ConnectCardPopup
+            onToggleModal={handleAddCardButtonClick}
+            onBluetoothCheck={checkBluetoothState}
+          />
         : ''
       }
     </SafeAreaView>
