@@ -5,11 +5,15 @@ import Svg, { Circle } from "react-native-svg";
 import CardList from "@/app/components/card-list/card-list";
 import { savedCards } from "@/app/mock/cards";
 
-export default function MainPage(): JSX.Element {
+type MainPageProps = {
+  onToggleModal: () => void;
+}
+
+export default function MainPage({onToggleModal}: MainPageProps): JSX.Element {
   return (
     <View style={mainPageStyles.container}>
       <View style={mainPageStyles.onlineIndicatorContainer}>
-        <Text style={mainPageStyles.text}>Device conected...</Text>
+        <Text style={mainPageStyles.text}>Emu conected...</Text>
         <Svg height="70%" width="10%" viewBox="0 0 100 100" >
           <Circle cx="50" cy="50" r="50" fill="#14FF00" />
         </Svg>
@@ -20,7 +24,7 @@ export default function MainPage(): JSX.Element {
       </View>
       
 
-      <TouchableHighlight style={mainPageStyles.addCardButton}>
+      <TouchableHighlight style={mainPageStyles.addCardButton} onPress={onToggleModal}>
         <Image
         style={mainPageStyles.addCardIco}
           source={require('../../../source/ico-add-card.png')}

@@ -9,11 +9,13 @@ import HistoryPage from "./pages/history-page/history-page";
 import Loader from "./components/loader/loader";
 import SettingsPopup from "./components/settings-popup/settings-popup";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ConnectCardPopup from "./connect-card-popup/connect-card-popup";
 
 export default function Index() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [mainPageStatus, setMainPageStatus] = useState(true);
   const [settingPopupStatus, setSettingPopupStatus] = useState(false);
+  const [addCardPopupStatus, setAddCardPopupStatus] = useState(false);
 
   useEffect(() => {
     async function loadFonts() {
@@ -43,14 +45,18 @@ export default function Index() {
 
   const handleSettingsButtonClick = () => {
     setSettingPopupStatus(!settingPopupStatus);
-  }
+  };
+
+  const handleAddCardButtonClick = () => {
+    setAddCardPopupStatus(!addCardPopupStatus);
+  };
 
   return (
     <SafeAreaView style={indexStyles.container}>
       <Header onSettingsPress={handleSettingsButtonClick} />
       {
         mainPageStatus
-        ? <MainPage />
+        ? <MainPage onToggleModal={handleAddCardButtonClick} />
         : <HistoryPage />
       }
       <Footer
@@ -61,6 +67,12 @@ export default function Index() {
       {
         settingPopupStatus
         ? <SettingsPopup onToggleModal={handleSettingsButtonClick}/>
+        : ''
+      }
+
+      {
+        addCardPopupStatus
+        ? <ConnectCardPopup onToggleModal={handleAddCardButtonClick} />
         : ''
       }
     </SafeAreaView>
