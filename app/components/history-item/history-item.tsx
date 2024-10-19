@@ -1,15 +1,22 @@
-import { Card } from "@/app/types";
+import { SavedCard } from "@/app/types";
 import React from "react";
 import { View, Text } from "react-native";
+import { historyItemStyles } from "./history-item.styles";
+import { convertDate } from "@/app/utils";
 
 type HistoryItemProps = {
-  card: Card
+  card: SavedCard
 };
 
-export default function HistoryItem({ card }: HistoryItemProps): JSX.Element {
+export default function HistoryItem({card}: HistoryItemProps): JSX.Element {
+  const convertedDate = convertDate(card.lastReadTime);
+
   return (
-    <View>
-      <Text>{card.lastReadTime}</Text>
+    <View style={historyItemStyles.container}>
+      <View style={historyItemStyles.titleContainer}>
+            <Text style={historyItemStyles.titleText}>{card.title}</Text>
+          </View>
+      <Text style={historyItemStyles.text}>{convertedDate}</Text>
     </View>
   );
 }

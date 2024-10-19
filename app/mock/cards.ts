@@ -51,7 +51,7 @@ export const savedCards: SavedCard[] = [
     isActive: false
   },
   {
-    title: 'Kinder Garden',
+    title: 'Home',
     uid: "05:78:32:07:a3:e2:bd",
     cardType: "MIFARE DESFire",
     lastReadTime: "2024-10-12T18:45:00Z",

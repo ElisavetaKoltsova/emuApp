@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { historyPageStyles } from "./history-page.styles";
 import HistoryList from "@/app/components/history-list/history-list";
-import { cards } from "@/app/mock/cards";
+import { savedCards } from "@/app/mock/cards";
 
 export default function HistoryPage(): JSX.Element {
   return (
@@ -10,7 +10,7 @@ export default function HistoryPage(): JSX.Element {
       <Text style={historyPageStyles.title}>
         Your History
       </Text>
-      <HistoryList cards={cards}/>
+      <HistoryList cards={savedCards}/>
     </View>
   );
 }
