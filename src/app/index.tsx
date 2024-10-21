@@ -10,19 +10,24 @@ import Loader from "./components/loader/loader";
 import SettingsPopup from "./components/settings-popup/settings-popup";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ConnectCardPopup from "./components/connect-card-popup/connect-card-popup";
-import BleManager from 'react-native-ble-manager';
-import { NativeEventEmitter, NativeModules } from "react-native";
 
-const BleManagerModule = NativeModules.BleManager;
-const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
+// const manager = new BleManager();
+
+// const requestPermissions = async () => {
+//   if (Platform.OS === 'android') {
+//     await PermissionsAndroid.requestMultiple([
+//       PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN,
+//       PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
+//       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+//     ]);
+//   }
+// };
 
 export default function Index() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [mainPageStatus, setMainPageStatus] = useState(true);
   const [settingPopupStatus, setSettingPopupStatus] = useState(false);
   const [addCardPopupStatus, setAddCardPopupStatus] = useState(false);
-
-  const [devices, setDevices] = useState([]);
 
   useEffect(() => {
     async function loadFonts() {
@@ -38,30 +43,36 @@ export default function Index() {
     loadFonts();
   }, []);
 
-  useEffect(() => {
-    BleManager.start({ showAlert: false })
-      .then(() => {
-          console.log('BleManager успешно инициализирован');
-      })
-      .catch((error) => {
-          console.error('Ошибка при инициализации BleManager:', error);
-      });
+  const [devices, setDevices] = useState([]);
 
-    const handleDiscoverPeripheral = (peripheral) => {
-        if (!devices.find((device) => device.id === peripheral.id)) {
-            setDevices((prevDevices) => [...prevDevices, peripheral]);
-        }
-    };
+  // useEffect(() => {
+  //   requestPermissions();
+  //   const subscription = manager.onStateChange((state) => {
+  //     if (state === 'PoweredOn') {
+  //       scanAndConnect();
+  //       subscription.remove();
+  //     }
+  //   }, true);
 
-    const discoverPeripheralListener = bleManagerEmitter.addListener(
-        'BleManagerDiscoverPeripheral',
-        handleDiscoverPeripheral
-    );
+  //   return () => {
+  //     manager.destroy();
+  //   };
+  // }, []);
 
-    return () => {
-        discoverPeripheralListener.remove();
-    };
-}, [devices]);
+  // const scanAndConnect = () => {
+  //   manager.startDeviceScan(null, null, (error, device) => {
+  //     if (error) {
+  //       console.log(error);
+  //       return;
+  //     }
+
+  //     if (device && !devices.includes(device)) {
+  //       setDevices([...devices, device]);
+  //       console.log('Found device:', device.name);
+  //     }
+  //   });
+  // };
+
 
   if (!fontLoaded) {
     return <Loader />;
@@ -83,15 +94,7 @@ export default function Index() {
     setAddCardPopupStatus(!addCardPopupStatus);
   };
 
-  const startScan = () => {
-    BleManager.scan([], 10, true)
-        .then(() => {
-            console.log('Сканирование начато');
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-  };
+  
 
   return (
     <SafeAreaView style={indexStyles.container}>
@@ -118,7 +121,7 @@ export default function Index() {
         addCardPopupStatus
         ? <ConnectCardPopup
             onToggleModal={handleAddCardButtonClick}
-            onBluetoothCheck={startScan}
+            //onBluetoothCheck={}
           />
         : ''
       }
