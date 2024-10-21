@@ -10,7 +10,9 @@ export default function HistoryPage(): JSX.Element {
       <Text style={historyPageStyles.title}>
         Your History
       </Text>
-      <HistoryList cards={savedCards}/>
+      <View style={historyPageStyles.listContainer}>
+        <HistoryList cards={savedCards}/>
+      </View>
     </View>
   );
 }
