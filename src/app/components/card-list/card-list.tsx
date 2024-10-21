@@ -8,7 +8,7 @@ type CardListProps = {
   cards: SavedCard[]
 }
 
-export default function HistoryList({cards}: CardListProps): JSX.Element {
+export default function CardList({cards}: CardListProps): JSX.Element {
   return (
     <ScrollView>
       <View style={cardListStyles.container}>
