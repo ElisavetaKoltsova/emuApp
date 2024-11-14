@@ -4,10 +4,9 @@ import { connectCardPopupStyles } from "./connect-card-popup.styles";
 
 type ConnectCardPopupProps = {
   onToggleModal: () => void;
-  onBluetoothCheck: () => void;
 }
 
-export default function ConnectCardPopup({onToggleModal, onBluetoothCheck}: ConnectCardPopupProps): JSX.Element {
+export default function ConnectCardPopup({onToggleModal}: ConnectCardPopupProps): JSX.Element {
   return (
     <Modal
       animationType="slide"
@@ -23,7 +22,7 @@ export default function ConnectCardPopup({onToggleModal, onBluetoothCheck}: Conn
             <Image style={connectCardPopupStyles.iconBluetooth} source={require('../../../source/ico-bluetooth-100.png')} />
           </View>
 
-          <TouchableOpacity onPress={onBluetoothCheck}>
+          <TouchableOpacity>
             <Text>
               Check Bluetooth
             </Text>

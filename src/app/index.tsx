@@ -10,8 +10,9 @@ import Loader from "./components/loader/loader";
 import SettingsPopup from "./components/settings-popup/settings-popup";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ConnectCardPopup from "./components/connect-card-popup/connect-card-popup";
+import { BleManager } from "react-native-ble-plx";
 
-// const manager = new BleManager();
+// const manager = new BleManager;
 
 // const requestPermissions = async () => {
 //   if (Platform.OS === 'android') {
